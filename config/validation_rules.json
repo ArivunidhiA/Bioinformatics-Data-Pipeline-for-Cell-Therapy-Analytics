@@ -1,0 +1,209 @@
+{
+  "validation_rules": {
+    "data_integrity": {
+      "required_fields": {
+        "flow_cytometry_data": [
+          "sample_id",
+          "batch_id",
+          "acquisition_date",
+          "technician_id",
+          "total_events",
+          "viability_percentage"
+        ],
+        "cell_counts": [
+          "sample_id",
+          "batch_id",
+          "count_date",
+          "total_cells",
+          "viable_cells",
+          "viability_percentage"
+        ],
+        "sample_metadata": [
+          "sample_id",
+          "cell_type",
+          "collection_date",
+          "batch_id"
+        ]
+      },
+      "data_types": {
+        "sample_id": "string",
+        "batch_id": "string",
+        "acquisition_date": "datetime",
+        "count_date": "datetime",
+        "collection_date": "date",
+        "total_events": "integer",
+        "total_cells": "integer",
+        "viable_cells": "integer",
+        "viability_percentage": "float",
+        "cell_density": "float"
+      },
+      "value_ranges": {
+        "total_events": {
+          "min": 1000,
+          "max": 1000000,
+          "description": "Total events must be between 1,000 and 1,000,000"
+        },
+        "total_cells": {
+          "min": 1000,
+          "max": 10000000,
+          "description": "Total cell count must be between 1,000 and 10,000,000"
+        },
+        "viability_percentage": {
+          "min": 0.0,
+          "max": 100.0,
+          "description": "Viability percentage must be between 0% and 100%"
+        },
+        "cell_density": {
+          "min": 0.0,
+          "max": 1000000.0,
+          "description": "Cell density must be between 0 and 1,000,000 cells/mL"
+        }
+      }
+    },
+    "business_rules": {
+      "sample_processing": {
+        "max_processing_time_hours": 24,
+        "required_metadata_fields": [
+          "patient_id",
+          "cell_type",
+          "collection_date"
+        ],
+        "quality_score_threshold": 0.8,
+        "description": "Sample processing must complete within 24 hours and meet quality standards"
+      },
+      "batch_processing": {
+        "max_batch_size": 100,
+        "min_batch_size": 5,
+        "batch_consistency_check": true,
+        "cross_batch_validation": true,
+        "description": "Batch processing must include 5-100 samples with consistency validation"
+      },
+      "quality_control": {
+        "min_viability": 70.0,
+        "max_viability": 100.0,
+        "outlier_threshold": 3.0,
+        "batch_consistency_threshold": 0.85,
+        "description": "Quality control thresholds for cell viability and batch consistency"
+      }
+    },
+    "flow_cytometry_specific": {
+      "gating_parameters": {
+        "live_cells": {
+          "fsc_threshold": 50000,
+          "ssc_threshold": 30000,
+          "viability_marker": "PI",
+          "viability_threshold": 0.1,
+          "description": "Live cell gating parameters for flow cytometry analysis"
+        },
+        "t_cells": {
+          "cd3_threshold": 1000,
+          "cd4_threshold": 500,
+          "cd8_threshold": 500,
+          "description": "T-cell population gating parameters"
+        },
+        "nk_cells": {
+          "cd56_threshold": 1000,
+          "cd16_threshold": 500,
+          "description": "NK-cell population gating parameters"
+        },
+        "b_cells": {
+          "cd19_threshold": 1000,
+          "cd20_threshold": 500,
+          "description": "B-cell population gating parameters"
+        }
+      },
+      "compensation": {
+        "method": "auto",
+        "min_compensation": 0.0,
+        "max_compensation": 1.0,
+        "description": "Compensation settings for flow cytometry data"
+      }
+    },
+    "statistical_validation": {
+      "confidence_level": 0.95,
+      "sample_size_calculation": true,
+      "power_analysis": true,
+      "multiple_testing_correction": "bonferroni",
+      "description": "Statistical validation parameters for data analysis"
+    },
+    "change_control": {
+      "require_approval": true,
+      "approval_threshold": 2,
+      "change_logging": true,
+      "rollback_enabled": true,
+      "description": "Change control procedures for system modifications"
+    },
+    "performance_targets": {
+      "processing_time_reduction_percentage": 65,
+      "data_integrity_compliance_percentage": 94,
+      "quality_control_automation_percentage": 80,
+      "change_control_efficiency_percentage": 100,
+      "description": "Business impact metrics and performance targets"
+    },
+    "error_handling": {
+      "max_error_rate": 0.02,
+      "retry_attempts": 3,
+      "error_logging": true,
+      "alert_threshold": 0.05,
+      "description": "Error handling and alerting parameters"
+    },
+    "data_retention": {
+      "retention_days": 2555,
+      "backup_frequency": "daily",
+      "archive_after_days": 365,
+      "description": "Data retention and archival policies"
+    }
+  },
+  "validation_actions": {
+    "data_integrity_violation": {
+      "action": "reject",
+      "severity": "error",
+      "description": "Reject data that fails integrity checks"
+    },
+    "business_rule_violation": {
+      "action": "flag_for_review",
+      "severity": "warning",
+      "description": "Flag data that violates business rules for manual review"
+    },
+    "quality_control_failure": {
+      "action": "retest",
+      "severity": "warning",
+      "description": "Require retesting for quality control failures"
+    },
+    "performance_target_miss": {
+      "action": "alert",
+      "severity": "info",
+      "description": "Alert when performance targets are not met"
+    }
+  },
+  "validation_workflows": {
+    "data_ingestion": [
+      "check_required_fields",
+      "validate_data_types",
+      "check_value_ranges",
+      "apply_business_rules",
+      "log_validation_results"
+    ],
+    "flow_cytometry_analysis": [
+      "validate_gating_parameters",
+      "check_compensation",
+      "apply_quality_control",
+      "calculate_statistics",
+      "generate_reports"
+    ],
+    "batch_processing": [
+      "validate_batch_size",
+      "check_batch_consistency",
+      "apply_cross_batch_validation",
+      "calculate_batch_metrics",
+      "update_batch_status"
+    ],
+    "change_control": [
+      "log_change_request",
+      "validate_change_impact",
+      "require_approval",
+      "apply_change",
+      "update_audit_log"
+    ]
+  }
+} 
