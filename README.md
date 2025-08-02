@@ -1,5 +1,7 @@
 # Bioinformatics Cell Therapy Analytics Pipeline
 
+![Cell Therapy Analytics Dashboard](b1.png)
+
 ## Project Overview
 A comprehensive bioinformatics data pipeline for cell therapy analytics demonstrating business systems analysis skills, flow cytometry data processing, change control procedures, and validation protocols. This project showcases expertise relevant to Life Sciences companies like Vertex Pharmaceuticals.
 
@@ -107,7 +109,7 @@ The Cell Therapy Analytics Dashboard provides a comprehensive view of bioinforma
 - **Batch Comparison**: Statistical comparison across different processing batches
 
 ### Business Impact Metrics Section
-![Business Impact Metrics](docs/images/business-impact-metrics.png)
+![Business Impact Metrics](b2.png)
 
 The dashboard displays four critical business impact metrics:
 - **Processing Time Reduction**: 65% improvement in data processing efficiency
@@ -116,7 +118,7 @@ The dashboard displays four critical business impact metrics:
 - **Change Control Efficiency**: 100% streamlined approval processes with audit trail
 
 ### Sample Overview and Viability Analysis
-![Sample Overview](docs/images/sample-overview.png)
+![Sample Overview](b3.png)
 
 **Sample Overview Section:**
 - **Total Samples**: 15 processed samples
@@ -130,7 +132,7 @@ The dashboard displays four critical business impact metrics:
 - Consistent high viability across all processed samples
 
 ### Trend Analysis Dashboard
-![Trend Analysis](docs/images/trend-analysis.png)
+![Trend Analysis](b4.png)
 
 **Viability Trends Over Time:**
 - **Date Range**: July 19-31, 2025
@@ -140,7 +142,7 @@ The dashboard displays four critical business impact metrics:
 - **Key Insight**: All samples consistently above minimum threshold, with room for improvement toward target
 
 ### Quality Control and Alerts
-![Quality Alerts](docs/images/quality-alerts.png)
+![Quality Alerts](b5.png)
 
 **Quality Alert System:**
 - **Alert**: 14 samples with quality score below 0.7
@@ -149,7 +151,7 @@ The dashboard displays four critical business impact metrics:
 - **Action Items**: Clear identification of samples needing quality improvement
 
 ### Batch Comparison Analysis
-![Batch Comparison](docs/images/batch-comparison.png)
+![Batch Comparison](b6.png)
 
 **Batch Performance Summary:**
 - **Batch 1**: 5 samples, avg viability 82.97%, total cells 264,449
@@ -162,7 +164,7 @@ The dashboard displays four critical business impact metrics:
 - Consistent performance across all batches with minimal variability
 
 ### Cell Population Analysis
-![Cell Populations](docs/images/cell-populations.png)
+![Cell Populations](b6.png)
 
 **Quality Score Comparison:**
 - Box plots showing quality score distributions by batch
@@ -176,7 +178,6 @@ The dashboard displays four critical business impact metrics:
 - **Consistent Patterns**: Similar cell population ratios across all batches
 
 ### Navigation and Filtering
-![Dashboard Navigation](docs/images/dashboard-navigation.png)
 
 **Sidebar Navigation:**
 - **Page Selection**: Overview, Quality Control, Trend Analysis, Batch Comparison
